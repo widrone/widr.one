@@ -1,6 +1,6 @@
 body {
-    font-family: "Verdana", "Geneva", sans-serif; /* New font */
-    color: #5D4037; /* New default text color */
+    font-family: 'Nunito', sans-serif; /* Updated font */
+    color: #5D4037; /* Ensured this color is present */
     margin: 0;
     display: flex;
 }
@@ -13,11 +13,12 @@ body {
 
 .sidebar {
     width: 200px;
-    background-color: #8FBC8F; /* New background - DarkSeaGreen */
+    background-color: #8FBC8F;
     padding: 20px;
-    color: #F5F5DC; /* New text color - Beige */
-    height: 100vh; /* Changed from min-height to height for consistency */
+    color: #F5F5DC;
+    height: 100vh;
     box-sizing: border-box;
+    font-family: 'Nunito', sans-serif; /* Added for consistency */
 }
 
 .sidebar ul {
@@ -27,7 +28,7 @@ body {
 }
 
 .sidebar ul li a {
-    color: #F5F5DC; /* New link color - Beige */
+    color: #F5F5DC;
     text-decoration: none;
     display: block;
     padding: 10px 0;
@@ -35,61 +36,87 @@ body {
 
 .sidebar ul li a.active {
     font-weight: bold;
-    color: #FFF8DC; /* New active link color - Cornsilk */
+    color: #FFF8DC;
 }
 
 .sidebar ul li a:hover {
-    background-color: #79A879; /* New hover background */
+    background-color: #79A879;
 }
 
 .main-content {
     flex-grow: 1;
-    padding: 40px; /* Increased padding */
-    background-color: #FAF3E0; /* New background - Linen/Old Lace like */
+    padding: 40px;
+    background-color: #FAF3E0;
     box-sizing: border-box;
 }
 
-.main-content h1 { /* Combined with existing h1, new styles take precedence */
-    color: #556B2F; /* New color - DarkOliveGreen */
-    font-family: "Georgia", serif; /* New font */
+.main-content h1 {
+    color: #556B2F; /* Ensured this color is present */
+    font-family: 'Montserrat', sans-serif; /* Updated font */
 }
 
-.main-content p { /* Combined with existing p, new styles take precedence */
-    color: #5D4037; /* New color - soft, dark brown */
-    line-height: 1.6; /* New line height */
+.main-content p {
+    color: #5D4037; /* This was already the body color, so it inherits. Explicitly setting is also fine */
+    line-height: 1.6;
+    /* font-family: 'Nunito', sans-serif; will be inherited from body */
 }
 
 .image-placeholder {
     width: 100%;
-    max-width: 600px; /* Keep max-width */
-    height: auto; /* Adjust height to be auto for image aspect ratio */
-    background-color: transparent; /* Removed #ccc */
-    border: 1px solid #D2B48C; /* New border color - tan */
-    border-radius: 15px; /* New border-radius */
+    max-width: 600px;
+    height: auto;
+    background-color: transparent;
+    border: 1px solid #D2B48C;
+    border-radius: 15px;
     margin-bottom: 20px;
-    display: flex; /* Keep for centering if image is smaller than container */
+    display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* color: #555; Removed, as image will fill this */
-    overflow: hidden; /* Ensures the img's rounded corners are visible if img is direct child */
+    overflow: hidden;
 }
 
-.main-content img, /* General style for images in main content */
+.main-content img,
 .image-placeholder img {
-    border-radius: 15px; /* Rounded corners for images */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow */
-    max-width: 100%; /* Ensure image is responsive within its container */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* To remove extra space below image if any */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-/* Fallback for h1 and p if they are not inside .main-content, though current structure has them inside */
-h1 {
-    color: #556B2F; /* Default to new theme color */
+/* Fallback for h1 and p if they are not inside .main-content */
+h1 { /* This will be overridden by .main-content h1 for specific context */
+    color: #556B2F;
+    font-family: 'Montserrat', sans-serif; /* Updated font */
 }
 
-p {
-    color: #5D4037; /* Default to new theme color */
+p { /* This will be overridden by .main-content p for specific context, or inherit from body */
+    color: #5D4037;
     line-height: 1.6;
+    font-family: 'Nunito', sans-serif; /* Explicitly set for safety, though body should cover it */
+}
+
+/* Media Query for Responsive Layout */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack sidebar and main content */
+    }
+
+    .sidebar {
+        width: 100%; /* Full width for sidebar */
+        height: auto; /* Adjust height to content */
+        padding-bottom: 20px; /* Add some space below sidebar content */
+        /* box-sizing: border-box; is already set and inherited */
+    }
+
+    .main-content {
+        width: 100%; /* Ensure main content takes full width */
+        /* padding: 40px; is existing and should be fine, adjust if needed */
+    }
+
+    /* Optional: Adjust sidebar link padding for easier tapping */
+    .sidebar ul li a {
+        padding: 15px 20px; /* Increase padding for tap targets, adjust horizontal if needed */
+    }
 }
